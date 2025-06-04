@@ -43,7 +43,7 @@ const PatientForm = () => {
       }
 
       const user = await createUser(userData);
-      if (user) router.push(`/patient/${user.id}/register`)
+      if (user) router.push(`/patient/${user.$id}/register`)
     } catch (error) {
       console.error("Error submitting form:", error)
     }
