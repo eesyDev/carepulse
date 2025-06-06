@@ -3,16 +3,15 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Button } from "@/components/ui/button";
 import { Form, FormControl } from "@/components/ui/form";
 import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { useState } from "react";
-import { UserFormValidation } from "@/lib/validation";
-import { createUser } from "@/lib/actions/patient.actions";
+import { PatientFormValidation } from "@/lib/validation";
+import { registerPatient } from "@/lib/actions/patient.actions";
 import { useRouter } from "next/navigation";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Doctors, GenderOptions, IdentificationTypes } from "@/constans";
+import { Doctors, GenderOptions, IdentificationTypes, PatientFormDefaultValues } from "@/constans";
 import { Label } from "@/components/ui/label";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
@@ -31,30 +30,48 @@ export enum FormFieldType {
 const RegisterForm = ({ user }: { user: User }) => {
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
-    const form = useForm<z.infer<typeof UserFormValidation>>({
-        resolver: zodResolver(UserFormValidation),
+    const form = useForm<z.infer<typeof PatientFormValidation>>({
+        resolver: zodResolver(PatientFormValidation),
         defaultValues: {
+            ...PatientFormDefaultValues,
             name: "",
             email: "",
             phone: ""
         },
     })
-    async function onSubmit(values: z.infer<typeof UserFormValidation>) {
-        setIsLoading(true)
-        try {
-            const userData = {
-                name: values.name,
-                email: values.email,
-                phone: values.phone
-            }
 
-            const user = await createUser(userData);
-            if (user) router.push(`/patient/${user.$id}/register`)
+async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
+        setIsLoading(true);
+
+        let formData;
+
+        if(values.identificationDocument && values.identificationDocument.length > 0) {
+            const blobFile = new Blob([values.identificationDocument[0]], { type: values.identificationDocument[0].type });
+
+            formData = new FormData();
+            formData.append("blobFile", blobFile);
+            formData.append("fileName", values.identificationDocument[0].name);
+        }
+        try {
+            const patientData = {
+                ...values,
+                userId: user.$id,
+                birthDate: new Date(values.birthDate),
+                identificationDocument: formData,
+            }
+            
+            const patient = await registerPatient(patientData);
+
+            if (patient) router.push(`/patient/${user.$id}/new-appointment`);
         } catch (error) {
             console.error("Error submitting form:", error)
         }
         console.log(values)
     }
+
+// const onSubmit = (vals) => {
+//     console.log(vals)
+// }
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 flex-1">
@@ -158,8 +175,8 @@ const RegisterForm = ({ user }: { user: User }) => {
                     <CustomFormField
                         control={form.control}
                         fieldType={FormFieldType.PHONE_INPUT}
-                        name="emergencyContactPhone"
-                        label="Emergency contact phone"
+                        name="emergencyContactNumber"
+                        label="Emergency contact number"
                         placeholder="(000) - 555 - 11 - 22"
                     />
                 </div>

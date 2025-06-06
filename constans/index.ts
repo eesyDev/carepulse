@@ -53,3 +53,29 @@ export const Doctors = [
     "Student ID Card",
     "Voter ID Card",
   ];
+
+  export const PatientFormDefaultValues = {
+    name: "",
+    email: "",
+    phone: "",
+    birthDate: new Date(Date.now()),
+    gender: "Male" as Gender,
+    address: "",
+    occupation: "",
+    emergencyContactName: "",
+    emergencyContactNumber: "",
+    primaryPhysician: "",
+    insuranceProvider: "",
+    insurancePolicyNumber: "",
+    allergies: "",
+    currentMedication: "",
+    familyMedicalHistory: "",
+    pastMedicalHistory: "",
+    identificationType: "Birth Certificate",
+    identificationNumber: "",
+    identificationDocument: [],
+    privacyConsent: false,
+    treatmentConsent: false,
+    disclosureConsent: false,
+  };
+  
