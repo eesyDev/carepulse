@@ -55,3 +55,9 @@ declare type SearchParamProps = {
     appointment: Appointment;
     type: string;
   };
+
+  declare interface AppointmentFormProps {
+    type: "create" | "cancel" | "schedule";
+    userId: string;
+    patientId: string;
+  }

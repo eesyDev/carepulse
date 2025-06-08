@@ -2,9 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import PatientForm from "@/components/forms/PatientForm";
 import Copyright from "@/components/Copyright";
+import AppointmentForm from "@/components/forms/AppointmentForm";
+import { getPatient } from "@/lib/actions/patient.actions";
 
 
-const NewAppointment = () => {
+const NewAppointment = async ({ params: { userId } } : SearchParamProps) => {
+    const patient = await getPatient(userId);
   return (
     <div className="flex h-screen max-h-screen">
 			<section className="remove-scrollbar container my-auto">
@@ -16,7 +19,11 @@ const NewAppointment = () => {
 						alt="Logo"
 						className="mb-12 h-10 w-fit"
 					/>
-					<PatientForm />
+					<AppointmentForm 
+                        type="create"
+                        userId={userId}
+                        patientId={patient?.$id}
+                    />
 					<Copyright/>
 				</div>
 			</section>
