@@ -1,3 +1,4 @@
+import Copyright from "@/components/Copyright";
 import PatientForm from "@/components/forms/PatientForm";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -19,9 +20,7 @@ export default function Home() {
 					/>
 					<PatientForm />
 					<div className="text-14-regular mt-20 flex justify-between">
-						<p className="justify-items-end text-dark-600">
-							© 2025 CarePulse
-						</p>
+						<Copyright/>
 						<Link href="/?admin=true" className="text-green-500">
 							Admin
 						</Link>

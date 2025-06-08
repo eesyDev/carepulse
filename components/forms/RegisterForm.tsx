@@ -68,10 +68,6 @@ async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
         }
         console.log(values)
     }
-
-// const onSubmit = (vals) => {
-//     console.log(vals)
-// }
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 flex-1">
