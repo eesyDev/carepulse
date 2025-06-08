@@ -14,6 +14,7 @@ import { SelectItem } from "../ui/select";
 import { Doctors } from "@/constans";
 import Image from "next/image";
 import { get } from "http";
+import { createAppointment } from "@/lib/actions/appointment.actions";
 
 
 
@@ -56,20 +57,19 @@ const AppointmentForm = ({ type, userId, patientId }: AppointmentFormProps) => {
                   status: status as Status,
                   note: values.note,
                 };
-        
-                // const newAppointment = await createAppointment(appointment);
-        
-                // if (newAppointment) {
-                //   form.reset();
-                //   router.push(
-                //     `/patients/${userId}/new-appointment/success?appointmentId=${newAppointment.$id}`
-                //   );
-                // }
+        console.log("Creating appointment with values:", appointment);
+                const newAppointment = await createAppointment(appointment);
+        console.log("New appointment created:", newAppointment);
+                if (newAppointment) {
+                  form.reset();
+                  router.push(
+                    `/patients/${userId}/new-appointment/success?appointmentId=${newAppointment.$id}`
+                  );
+                }
               }
         } catch (error) {
             console.error("Error submitting form:", error)
         }
-        console.log(values)
     }
 
     let buttonLabel;
@@ -164,7 +164,7 @@ const AppointmentForm = ({ type, userId, patientId }: AppointmentFormProps) => {
                     isLoading={isLoading}
                     className={`${type === "cancel" ? "shad-danger-btn" : "shad-primary-btn"} w-full`}
                 >
-                    {status}
+                    {buttonLabel}
                 </SubmitButton>
             </form>
         </Form>
