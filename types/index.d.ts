@@ -61,3 +61,18 @@ declare type SearchParamProps = {
     userId: string;
     patientId: string;
   }
+
+  declare interface StatCardProps {
+    type: "appointments" | "pending" | "cancelled";
+    count: number;
+    label: string;
+    icon: string;
+  }
+
+  declare interface AppointmnetDataProps {
+    id: string;
+    patient: User;
+    primaryPhysician: string;
+    status: Status;
+    schedule: Date;
+  }

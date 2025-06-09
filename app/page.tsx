@@ -1,14 +1,16 @@
 import Copyright from "@/components/Copyright";
+import PasskeyModal from "@/components/PasskeyModal";
 import PatientForm from "@/components/forms/PatientForm";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
 
-export default function Home() {
+export default function Home({ searchParams }: SearchParamProps) {
+	const isAdmin = searchParams.admin === "true";
 	return (
 		<div className="flex h-screen max-h-screen">
-			{/* PasskeyModal */}
+			{ isAdmin && <PasskeyModal/>}
 			<section className="remove-scrollbar container my-auto">
 				<div className="sub-container max-w-[496px]">
 					<Image
@@ -19,12 +21,7 @@ export default function Home() {
 						className="mb-12 h-10 w-fit"
 					/>
 					<PatientForm />
-					<div className="text-14-regular mt-20 flex justify-between">
-						<Copyright/>
-						<Link href="/?admin=true" className="text-green-500">
-							Admin
-						</Link>
-					</div>
+					<Copyright isAdmin/>
 				</div>
 			</section>
 			<Image
