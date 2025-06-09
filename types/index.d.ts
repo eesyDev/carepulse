@@ -68,3 +68,11 @@ declare type SearchParamProps = {
     label: string;
     icon: string;
   }
+
+  declare interface AppointmnetDataProps {
+    id: string;
+    patient: User;
+    primaryPhysician: string;
+    status: Status;
+    schedule: Date;
+  }
