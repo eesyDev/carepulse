@@ -1,6 +1,7 @@
 import RegisterForm from '@/components/forms/RegisterForm'
 import { getUser } from '@/lib/actions/patient.actions'
 import { get } from 'http'
+import Copyright from '@/components/Copyright'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -21,9 +22,7 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
 					/>
 
 					<RegisterForm user={user} />
-					<p className="copyright py-12">
-						© {new Date().getFullYear()} CarePulse
-					</p>
+					<Copyright/>
 					{/* <div className="text-14-regular mt-20 flex justify-between">
 						<Link href="/?admin=true" className="text-green-500">
 							Admin
