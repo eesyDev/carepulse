@@ -22,7 +22,7 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
 					/>
 
 					<RegisterForm user={user} />
-					<Copyright/>
+					<Copyright isAdmin={false}/>
 					{/* <div className="text-14-regular mt-20 flex justify-between">
 						<Link href="/?admin=true" className="text-green-500">
 							Admin

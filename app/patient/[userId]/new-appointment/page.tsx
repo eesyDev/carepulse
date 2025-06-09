@@ -24,7 +24,7 @@ const NewAppointment = async ({ params: { userId } } : SearchParamProps) => {
                         userId={userId}
                         patientId={patient?.$id}
                     />
-					<Copyright/>
+					<Copyright isAdmin={false}/>
 				</div>
 			</section>
 			<Image

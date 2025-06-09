@@ -20,7 +20,7 @@ export default function Home() {
 					/>
 					<PatientForm />
 					<div className="text-14-regular mt-20 flex justify-between">
-						<Copyright/>
+						<Copyright isAdmin/>
 						<Link href="/?admin=true" className="text-green-500">
 							Admin
 						</Link>
