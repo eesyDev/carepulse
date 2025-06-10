@@ -29,7 +29,7 @@ const AppointmentForm = ({ type, userId, patientId, appointment, setOpen }: Appo
             schedule: appointment ? new Date(appointment.schedule) : new Date(),
             reason: appointment ? appointment.reason || "" : "", 
             note: appointment ? appointment.note || "" : "",
-            cancellationReason: appointment.cancellationReason || "",
+            cancellationReason: appointment ? appointment.cancellationReason || "" : "",
         },
     })
     async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
