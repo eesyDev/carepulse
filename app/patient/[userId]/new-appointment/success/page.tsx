@@ -12,7 +12,6 @@ const Success = async ({ params: {userId}, searchParams } : SearchParamProps) =>
     const appointment = await getAppontment(appointmentId);
     const doctor = Doctors.find(doc => doc.name === appointment?.primaryPhysician);
 
-    console.log("Appointment details:", appointment);
     return (
         <div className=" flex h-screen max-h-screen px-[5%]">
             <div className="success-img">
@@ -62,12 +61,12 @@ const Success = async ({ params: {userId}, searchParams } : SearchParamProps) =>
                     </div>
                 </section>
                 <Button variant="outline" className="shad-primary-btn" asChild>
-                    <Link href={`/patients/${userId}/new-appointment`}>
+                    <Link href={`/patient/${userId}/new-appointment`}>
                         New Appointment
                     </Link>
                 </Button>
 
-                <Copyright/>
+                <Copyright isAdmin={false}/>
             </div>
         </div>
     )

@@ -51,7 +51,7 @@ declare type SearchParamProps = {
   declare type UpdateAppointmentParams = {
     appointmentId: string;
     userId: string;
-    timeZone: string;
+    // timeZone: string;
     appointment: Appointment;
     type: string;
   };
@@ -60,6 +60,8 @@ declare type SearchParamProps = {
     type: "create" | "cancel" | "schedule";
     userId: string;
     patientId: string;
+    appointment?: Appointment;
+    setOpen: (visible: boolean) => void;
   }
 
   declare interface StatCardProps {
@@ -70,9 +72,18 @@ declare type SearchParamProps = {
   }
 
   declare interface AppointmnetDataProps {
-    id: string;
+    userId: string;
     patient: User;
     primaryPhysician: string;
     status: Status;
     schedule: Date;
   }
+
+declare interface AppointmentModalProps {
+  patientId: string;
+    userId: string;
+    appointment?: Appointment;
+    type: "schedule" | "cancel";
+    title: string;
+    description: string;
+}
