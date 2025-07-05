@@ -3,7 +3,7 @@
 import { formatDateTime, parseStringify } from "../utils";
 import { revalidatePath } from "next/cache";
 import { ID, Query } from "node-appwrite";
-import { APPOINTMENT_COLLECTION_ID, DATABASE_ID, databases } from "../appwrite.config";
+import { APPOINTMENT_COLLECTION_ID, DATABASE_ID, databases, messaging, } from "../appwrite.config";
 import { Appointment } from "@/types/appwrite.type";
 
 export const createAppointment = async (appointment: CreateAppointmentParams) => {
@@ -101,10 +101,35 @@ export const updateAppointment = async ({
 			appointmentId,
 			appointment
 		);
-		console.log("Appointment updated successfully:", updatedAppointment);
+		if (!updatedAppointment) throw Error;
+
+		const smsMessage = `Greetings from CarePulse. ${type === "schedule" 
+		? 
+		`Your appointment is confirmed for ${formatDateTime(appointment.schedule!).dateTime} with Dr. ${appointment.primaryPhysician}` 
+		: 
+		`We regret to inform that your appointment for ${formatDateTime(appointment.schedule!).dateTime} is cancelled. Reason:  ${appointment.cancellationReason}`}.`;
+
+
+		await sendSMSNotification(userId, smsMessage);
 		revalidatePath("/admin");
 		return parseStringify(updatedAppointment);
 	} catch (error) {
 		console.error("An error occurred while scheduling an appointment:", error);
 	}
 };
+
+export const sendSMSNotification = async (userId: string, content: string) => {
+	try {
+	  // https://appwrite.io/docs/references/1.5.x/server-nodejs/messaging#createSms
+	  const message = await messaging.createSms(
+		ID.unique(),
+		content,
+		[],
+		[userId]
+	  );
+	  return parseStringify(message);
+	} catch (error) {
+	  console.error("An error occurred while sending sms:", error);
+	}
+  };
+  
