@@ -61,7 +61,7 @@ declare type SearchParamProps = {
     userId: string;
     patientId: string;
     appointment?: Appointment;
-    setOpen: (visible: boolean) => void;
+    setOpen?: (visible: boolean) => void;
   }
 
   declare interface StatCardProps {
