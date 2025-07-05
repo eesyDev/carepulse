@@ -88,18 +88,6 @@ NEXT_PUBLIC_ADMIN_PASSKEY=
 SENTRY_AUTH_TOKEN=
 ```
 
-## Plaid
-```PLAID_CLIENT_ID=
-PLAID_SECRET=
-PLAID_ENV=sandbox
-```
-
-## Dwolla
-```DWOLLA_KEY=
-DWOLLA_SECRET=
-DWOLLA_BASE_URL=https://api-sandbox.dwolla.com
-DWOLLA_ENV=sandbox
-```
 
 4. **Run the development server**
 
