@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🏦 Medical Application (appointment with a doctor)
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-15.1.8-black?style=for-the-badge&logo=next.js)
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.4.1-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel)
+![Zod](https://zod.dev/) for schema validation
+![SMSNotifications](https://img.shields.io/badge/Twilio-FF2D55?style=for-the-badge&logo=twilio&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+**CarePulse** is a modern medical web application for booking doctor appointments, managing patient data, and streamlining clinic workflows.
+
+## 🚀 Live Demo
+
+**🔗 [View Live Demo](https://carepulse-brown-three.vercel.app/)**
+
+## ✨ Features
+
+- 🔐 **Secure Authentication** with Appwrite
+- 🩺 **Book appointments** with available doctors
+- 📅 **Choose** specific dates and times
+- 📲 **Phone number** validation with country code support
+- 📩 **SMS notifications** with Twilio
+- 💻 **Fully responsive** design
+- 🌐 **SEO-friendly** structure and meta tags
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Zod](https://zod.dev/) for schema validation
+
+### Backend & Services
+- [Appwrite](https://appwrite.io/) – Auth, database, functions
+- [Twilio](https://www.twilio.com/) – SMS notifications
+- [Vercel](https://vercel.com/) – Deployment
+- [Sentry](https://img.shields.io/badge/Sentry-Error_Monitoring-362D59?logo=sentry)
+
+### UI/UX
+- [Shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-Design_System-000000?logo=shadcnui)
+- [Radix UI](https://img.shields.io/badge/Radix_UI-Primitives-161618?logo=radix-ui)
+- [Chart.js](https://img.shields.io/badge/Chart.js-Graphs-FF6384?logo=chart.js)
+- [React Hook Form](https://img.shields.io/badge/React_Hook_Form-Forms-EC5990?logo=reacthookform)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+- Appwrite account (or self-hosted instance)
+- Twilio account (optional for SMS)
+
+### Installation
+
+1. **Clone the repository**
+- git clone git@github.com:eesyDev/carepulse.git
+- cd carepulse
+
+
+2. **Install dependencies**
+- npm install
+
+3. **Set up environment variables**
+- cp .env.example .env.local
+- Fill in your `.env.local`:
+
+## Appwrite
+```PROJECT_ID=
+API_KEY=
+DATABASE_ID=
+PATIENT_COLLECTION_ID=
+DOCTOR_COLLECTION_ID=
+APPOINTMENT_COLLECTION_ID=
+NEXT_PUBLIC_BUCKET_ID=
+
+NEXT_PUBLIC_ENDPOINT=
+
+NEXT_PUBLIC_ADMIN_PASSKEY=
+SENTRY_AUTH_TOKEN=
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Plaid
+```PLAID_CLIENT_ID=
+PLAID_SECRET=
+PLAID_ENV=sandbox
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Dwolla
+```DWOLLA_KEY=
+DWOLLA_SECRET=
+DWOLLA_BASE_URL=https://api-sandbox.dwolla.com
+DWOLLA_ENV=sandbox
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+4. **Run the development server**
 
-## Learn More
+```npm run dev```
 
-To learn more about Next.js, take a look at the following resources:
+- Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Live Demo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**🔗 [View Live Demo](https://carepulse-brown-three.vercel.app/)**
 
-## Deploy on Vercel
+## 🌐 Deployed on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is deployed and hosted on [Vercel](https://carepulse-brown-three.vercel.app/).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+---
+
+## ⭐ Star this repo if you find it helpful!
+
